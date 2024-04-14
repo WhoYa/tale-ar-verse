@@ -9,9 +9,9 @@ class CryptoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return CupertinoApp(
       title: 'CryptoApp',
-      theme: mainThemeMaterial,
+      theme: mainThemeCupertino,
       routes: routes,
     );
   }

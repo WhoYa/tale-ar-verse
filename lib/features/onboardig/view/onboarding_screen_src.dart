@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
+import 'package:taleaiverse/theme/theme.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -21,129 +23,98 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
     final theme = CupertinoTheme.of(context);
 
-    return Scaffold(
-      backgroundColor: Color(0xFF060623),
-      body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: const BoxDecoration(
-            color: Color(0xFF05051D),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Stack(
-                children: [
-                  Align(
-                    alignment: AlignmentDirectional(0, 0),
+    return CupertinoPageScaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
+      child: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          color: Color.fromARGB(255, 255, 255, 255),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Stack(
+              children: [
+                Align(
+                  alignment: Alignment.center,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.asset(
+                      'assets/illustrations/onboarding_welcome.png',
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 60),
+                    child: Text("Создайте свою сказку прямо сейчас",
+                        style: theme.textTheme.textStyle),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 94),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
-                      child: Image.asset(
-                        'assets/illustrations/onboarding_welcome.png',
-                        width: double.infinity,
-                        height: 414,
-                        fit: BoxFit.cover,
+                      child: const Icon(
+                        Icons.menu_book_rounded,
+                        size: 30,
+                        color: CupertinoColors.white,
                       ),
                     ),
                   ),
-                  Align(
-                    alignment: AlignmentDirectional(0, 0),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 356, 0, 0),
-                      child: Text(
-                        "Создайте свою сказку прямо сейчас",
-                        style: TextStyle(
-                          fontFamily: "averta",
-                          letterSpacing: 0,
-                          color: CupertinoColors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                        ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  CupertinoButton(
+                    onPressed: () async {
+                      Navigator.pushNamed(context, 'LoginPage');
+                    },
+                    color: Color.fromARGB(255, 155, 94, 225),
+                    padding: EdgeInsets.symmetric(horizontal: 24),
+                    borderRadius: BorderRadius.circular(20),
+                    child: Container(
+                      height: 60,
+                      alignment: Alignment.center,
+                      child: const Text(
+                        'Войти',
+                        style: CustomTextStyles.buttonStyle,
                       ),
                     ),
                   ),
-                  Align(
-                    alignment: AlignmentDirectional(0, 0),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 320, 0, 0),
-                      child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: Icon(
-                            Icons.menu_book_rounded,
-                            size: 30,
-                            color: Colors.white,
-                          )),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 12),
+                    child: CupertinoButton(
+                      onPressed: () async {
+                        Navigator.pushNamed(context, 'SignUpPage');
+                      },
+                      color: Color(0x1AFFFFFF),
+                      padding: EdgeInsets.symmetric(horizontal: 24),
+                      borderRadius: BorderRadius.circular(20),
+                      child: Container(
+                        height: 60,
+                        alignment: Alignment.center,
+                        child: const Text('Зарегистрироваться',
+                            style: CustomTextStyles.buttonStyle),
+                      ),
                     ),
                   ),
                 ],
               ),
-              Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(22, 20, 22, 0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      CupertinoButton(
-                        onPressed: () async {
-                          Navigator.pushNamed(context, 'LoginPage');
-                        },
-                        color: Color.fromARGB(255, 115, 94, 225),
-                        padding: EdgeInsets.symmetric(horizontal: 24),
-                        borderRadius: BorderRadius.circular(20),
-                        child: Container(
-                          height: 60,
-                          alignment: Alignment.center,
-                          child: Text('Войти',
-                              style: TextStyle(
-                                  fontFamily: 'Fairy',
-                                  letterSpacing: 0,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 22)),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
-                        child: CupertinoButton(
-                          onPressed: () async {
-                            Navigator.pushNamed(context, 'SignUpPage');
-                          },
-                          color: Color(0x1AFFFFFF),
-                          padding: EdgeInsets.symmetric(horizontal: 24),
-                          borderRadius: BorderRadius.circular(20),
-                          child: Container(
-                            height: 60,
-                            alignment: Alignment.center,
-                            child: Text('Зарегистрироваться',
-                                style: TextStyle(
-                                    fontFamily: 'Fairy',
-                                    letterSpacing: 0,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 22)),
-                          ),
-                        ),
-
-                        // CupertinoButton(
-                        //   onPressed: () async {
-                        //     Navigator.pushNamed(context, 'SignUpPage');
-                        //   },
-                        //   child: Text(
-                        //     'Зарегистрироваться',
-                        //     style: TextStyle(
-                        //       fontFamily: 'Fairy',
-                        //       color: Colors.white,
-                        //       letterSpacing: 0,
-                        //       fontWeight: FontWeight.w600,
-                        //       fontSize: 22
-                        //     ),
-                        //   ),
-                        //   color: Color(0x1AFFFFFF),
-                        //   padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
-                        //   borderRadius: BorderRadius.circular(20),
-                        // ),
-                      )
-                    ],
-                  )),
-            ],
-          )),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
