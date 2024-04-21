@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:taleaiverse/theme/theme.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -58,12 +59,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 Align(
                   alignment: const AlignmentDirectional(0, 0),
                   child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0, 325, 0, 0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 320, 0, 0),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: const Icon(
                         Icons.menu_book_rounded,
-                        size: 30,
+                        size: 35,
                         color: CupertinoColors.white,
                       ),
                     ),
@@ -88,7 +89,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       alignment: Alignment.center,
                       child: const Text(
                         'Войти',
-                        style: CustomTextStyles.buttonStyle,
+                        style: CustomTextStyles.buttonTextStyle,
                       ),
                     ),
                   ),
@@ -105,13 +106,43 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         height: 60,
                         alignment: Alignment.center,
                         child: const Text('Зарегистрироваться',
-                            style: CustomTextStyles.buttonStyle),
+                            style: CustomTextStyles.buttonTextStyle),
                       ),
                     ),
                   ),
                 ],
               ),
             ),
+            Align(
+              alignment: const AlignmentDirectional(0, 1),
+              child: Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(24, 100, 24, 90),
+                child: RichText(
+                  textScaler: MediaQuery.of(context).textScaler,
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'Регистрируясь, вы соглашаетесь с ',
+                        style: CustomTextStyles.usualAvertaTextStyle
+                            .copyWith(fontWeight: FontWeight.w500),
+                      ),
+                      const TextSpan(
+                        text: 'Условиями пользования',
+                        style: CustomTextStyles.avertaUnderline,
+                      ),
+                      TextSpan(
+                          text: ' и ',
+                          style: CustomTextStyles.usualAvertaTextStyle
+                              .copyWith(fontWeight: FontWeight.w500)),
+                      const TextSpan(
+                          text: 'Политикой конфиденциальности',
+                          style: CustomTextStyles.avertaUnderline)
+                    ],
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            )
           ],
         ),
       ),

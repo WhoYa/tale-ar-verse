@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class CustomTextStyles {
 
-  static const TextStyle usualAvertaStyle = TextStyle(
+  static const TextStyle usualAvertaTextStyle = TextStyle(
     fontFamily: 'averta',
     letterSpacing: 0,
     fontWeight: FontWeight.bold,
@@ -11,7 +11,7 @@ class CustomTextStyles {
     color: CupertinoColors.white,
   );
 
-  static const TextStyle buttonStyle = TextStyle(
+  static const TextStyle buttonTextStyle = TextStyle(
     fontFamily: 'Fairy',
     letterSpacing: 0,
     fontWeight: FontWeight.w600,
@@ -19,12 +19,12 @@ class CustomTextStyles {
     color: CupertinoColors.white,
   );
 
-  static const TextStyle textStyle3 = TextStyle(
-    fontFamily: 'YourFont',
-    letterSpacing: 0,
-    fontWeight: FontWeight.w400,
-    fontSize: 18,
-    color: CupertinoColors.white,
+  static const TextStyle avertaUnderline = TextStyle(
+    fontFamily: 'Averta',
+    color: Color(0xFF735EE1),
+    decoration: TextDecoration.underline,
+    fontWeight: FontWeight.w500,
+    fontSize: 14,
   );
 }
 
